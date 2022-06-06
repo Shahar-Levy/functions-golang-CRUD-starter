@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -27,48 +26,48 @@ func Main() {
 
 }
 
-type User struct {
-	Id    string
-	Score int
-}
+// type User struct {
+// 	Id    string
+// 	Score int
+// }
 
-// /user/{id}
-func getUser(w http.ResponseWriter, r *http.Request) {
+// // /user/{id}
+// func getUser(w http.ResponseWriter, r *http.Request) {
 
-	params := mux.Vars(r)
-	userid := params["id"]
+// 	params := mux.Vars(r)
+// 	userid := params["id"]
 
-	// fake user
-	testUser := User{
-		Id:    userid,
-		Score: 10,
-	}
+// 	// fake user
+// 	testUser := User{
+// 		Id:    userid,
+// 		Score: 10,
+// 	}
 
-	userJSON, err := json.Marshal(testUser)
-	if err != nil {
-		panic(err)
-	}
+// 	userJSON, err := json.Marshal(testUser)
+// 	if err != nil {
+// 		panic(err)
+// 	}
 
-	w.Write(userJSON)
-}
+// 	w.Write(userJSON)
+// }
 
-// /user/{id}/score/{score}
-func postUser(w http.ResponseWriter, r *http.Request) {
+// // /user/{id}/score/{score}
+// func postUser(w http.ResponseWriter, r *http.Request) {
 
-	params := mux.Vars(r)
-	userid := params["id"]
-	score := params["score"]
+// 	params := mux.Vars(r)
+// 	userid := params["id"]
+// 	score := params["score"]
 
-	// this does not update any data source. This is scaffolding
-	w.Write([]byte("posted user " + userid + " with score " + score))
-}
+// 	// this does not update any data source. This is scaffolding
+// 	w.Write([]byte("posted user " + userid + " with score " + score))
+// }
 
-// /user/{id}
-func deleteUser(w http.ResponseWriter, r *http.Request) {
+// // /user/{id}
+// func deleteUser(w http.ResponseWriter, r *http.Request) {
 
-	params := mux.Vars(r)
-	userid := params["id"]
+// 	params := mux.Vars(r)
+// 	userid := params["id"]
 
-	// this does not update any data source. This is scaffolding
-	w.Write([]byte("deleted " + userid))
-}
+// 	// this does not update any data source. This is scaffolding
+// 	w.Write([]byte("deleted " + userid))
+// }
