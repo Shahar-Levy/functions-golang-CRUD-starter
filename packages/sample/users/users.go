@@ -1,21 +1,28 @@
 package main
 
 import (
+	"encoding/json"
 	"net/http"
 
-	"encoding/json"
 	"github.com/gorilla/mux"
 )
+
+type Response struct {
+	StatusCode int               `json:"statusCode,omitempty"`
+	Headers    map[string]string `json:"headers,omitempty"`
+	Body       string            `json:"body,omitempty"`
+}
 
 func Main() {
 
 	r := mux.NewRouter()
-	r.HandleFunc("/sample/users/user/{id}", getUser).Methods("GET")
-	r.HandleFunc("/sample/users/user/{id}/score/{score}", postUser).Methods("POST")
-	r.HandleFunc("/sample/users/user/{id}", deleteUser).Methods("DELETE")
+	// r.HandleFunc("/sample/users/user/{id}", getUser).Methods("GET")
+	// r.HandleFunc("/sample/users/user/{id}/score/{score}", postUser).Methods("POST")
+	// r.HandleFunc("/sample/users/user/{id}", deleteUser).Methods("DELETE")
 
-	r.HandleFunc("/testing", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("function is working"))
+	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		path := r.URL.Path
+		w.Write([]byte("function is working on path " + path))
 	})
 
 }
