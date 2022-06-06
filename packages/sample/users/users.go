@@ -7,7 +7,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func main() {
+func Main() {
 
 	r := mux.NewRouter()
 	r.HandleFunc("/user/{id}", getUser).Methods("GET")
@@ -18,7 +18,7 @@ func main() {
 		w.Write([]byte("function is working"))
 	})
 
-	http.ListenAndServe(":8080", r)
+	// http.ListenAndServe(":8080", r)
 
 }
 
