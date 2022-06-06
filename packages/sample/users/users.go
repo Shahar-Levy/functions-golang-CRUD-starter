@@ -7,18 +7,16 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func Main() {
+func main() {
 
 	r := mux.NewRouter()
-	r.HandleFunc("/user/{id}", getUser).Methods("GET")
-	r.HandleFunc("/user/{id}/score/{score}", postUser).Methods("POST")
-	r.HandleFunc("/user/{id}", deleteUser).Methods("DELETE")
+	r.HandleFunc("/sample/users/user/{id}", getUser).Methods("GET")
+	r.HandleFunc("/sample/users/user/{id}/score/{score}", postUser).Methods("POST")
+	r.HandleFunc("/sample/users/user/{id}", deleteUser).Methods("DELETE")
 
 	r.HandleFunc("/testing", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("function is working"))
 	})
-
-	// http.ListenAndServe(":8080", r)
 
 }
 
