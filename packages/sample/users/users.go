@@ -7,7 +7,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func main() {
+func Main() {
 
 	r := mux.NewRouter()
 	r.HandleFunc("/sample/users/user/{id}", getUser).Methods("GET")
